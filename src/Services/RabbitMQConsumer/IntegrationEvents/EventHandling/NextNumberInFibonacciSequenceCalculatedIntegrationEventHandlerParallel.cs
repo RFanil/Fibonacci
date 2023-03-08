@@ -1,9 +1,9 @@
-﻿using Fibonacci.Processing;
-using Fibonacci;
+﻿using Fibonacci;
 using System.Text.Json;
 using RabbitMQProducerFirst.IntegrationEvents.Events;
 using Fibonacci.BuildingBlocks.EventBus.Abstractions;
 using Microsoft.Extensions.Options;
+using RabbitMQConsumer;
 
 namespace RabbitMQProducerFirst.IntegrationEvents.EventHandling;
 public class NextNumberInFibonacciSequenceCalculatedIntegrationEventHandlerParallel : IIntegrationEventHandler<NextNumberInFibonacciSequenceCalculatedIntegrationEvent> {
@@ -41,10 +41,10 @@ public class NextNumberInFibonacciSequenceCalculatedIntegrationEventHandlerParal
         var task = _factory.StartNew(() =>
         {
             try {
-                var integrationEvent = JsonSerializer.Deserialize(context.Message, eventType, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) as NextNumberInFibonacciSequenceCalculatedIntegrationEvent;
+                var integrationEvent = JsonSerializer.Deserialize(context.Message.AsSpan(), eventType, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) as NextNumberInFibonacciSequenceCalculatedIntegrationEvent;
                 var nextNumber = _fibonacciCalculator.GetNextNumberFromFibonacciSequence(integrationEvent.Number);
                 Handled?.Invoke(context.DeliveryTag, multiple: false);
-                _ = _sender.Send(nextNumber);
+                _ = _sender.Send(integrationEvent);
 
             }
             catch (Exception ex) {

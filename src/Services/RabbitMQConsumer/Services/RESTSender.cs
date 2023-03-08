@@ -1,4 +1,5 @@
-﻿using Fibonacci.Processing;
+﻿using RabbitMQConsumer;
+using RabbitMQProducerFirst.IntegrationEvents.Events;
 
 namespace RabbitMQProducerFirst.Services;
 internal class RESTSender : ISender {
@@ -16,8 +17,8 @@ internal class RESTSender : ISender {
         _httpClient.BaseAddress = new Uri("http://rabbitmqproducer:80/");
     }
 
-    public async Task Send(double number)
+    public async Task Send(NextNumberInFibonacciSequenceCalculatedIntegrationEvent @event)
     {
-        await _httpClient.PostAsync("Fibanacci/PostNextFibonacciNumber?payload=" + number, null);
+        await _httpClient.PostAsJsonAsync("Fibanacci/PostNextFibonacciNumber?payload", @event);
     }
 }

@@ -1,12 +1,10 @@
 using Fibonacci;
-using Fibonacci.Processing;
 using Fibonacci.BuildingBlocks.EventBus;
 using Fibonacci.BuildingBlocks.EventBus.Abstractions;
 using Fibonacci.BuildingBlocks.EventBusRabbitMQ.Connection;
 using Fibonacci.BuildingBlocks.EventBusRabbitMQ.Consumer;
 using Microsoft.Extensions.Options;
-using System.Diagnostics;
-using System.Reflection;
+using RabbitMQConsumer;
 using RabbitMQProducerFirst;
 using RabbitMQProducerFirst.IntegrationEvents.EventHandling;
 using RabbitMQProducerFirst.IntegrationEvents.Events;
@@ -63,6 +61,7 @@ void StartCalculation() {
 
     Parallel.For(0, appOption.Value.MaxDegreeOfParallelism + 1, (i) => {
         var sender = app.Services.GetRequiredService<ISender>();
-        sender.Send(firstNumberFromTheFibonacciSequence);
+        var integrationEvent = new NextNumberInFibonacciSequenceCalculatedIntegrationEvent(firstNumberFromTheFibonacciSequence);
+        sender.Send(integrationEvent);
     });
 }

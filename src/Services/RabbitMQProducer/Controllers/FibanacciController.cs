@@ -1,9 +1,6 @@
 using Fibonacci;
-using Fibonacci.Processing;
 using Microsoft.AspNetCore.Mvc;
 using Fibonacci.BuildingBlocks.EventBus.Abstractions;
-using Fibonacci.BuildingBlocks.EventBus.Events;
-using System.Net;
 using RabbitMQProducer.IntegrationEvents.Events;
 
 namespace RabbitMQProducer.Controllers
@@ -22,8 +19,8 @@ namespace RabbitMQProducer.Controllers
         }
 
         [HttpPost(nameof(PostNextFibonacciNumber), Name = nameof(PostNextFibonacciNumber))]
-        public void PostNextFibonacciNumber(double payload) {
-            var next = fibonacciCalculator.GetNextNumberFromFibonacciSequence(payload);
+        public void PostNextFibonacciNumber(NextNumberInFibonacciSequenceCalculatedIntegrationEvent @event) {
+            var next = fibonacciCalculator.GetNextNumberFromFibonacciSequence(@event.Number);
             _eventBus.Publish(new NextNumberInFibonacciSequenceCalculatedIntegrationEvent(next));
         }
     }

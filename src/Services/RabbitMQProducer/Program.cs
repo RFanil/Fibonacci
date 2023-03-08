@@ -25,7 +25,6 @@ void ConfigureDI() {
     builder.Services.AddSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
 }
 builder.Services.AddSingleton<FibonacciCalculator>();
-builder.Services.AddSingleton<ISender, EventBusSender>();
 
 builder.Services.AddSingleton<IPooledObjectPolicy<IModel>, RabbitModelPooledObjectPolicy>();
 
@@ -42,3 +41,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.Run();
+
+
+void T() {
+
+    var policy = new Microsoft.Extensions.ObjectPool.StringBuilderPooledObjectPolicy();
+}
