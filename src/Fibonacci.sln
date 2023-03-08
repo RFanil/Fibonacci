@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8E789B4C-E3EC-4BE3-AE88-0A451BC97499}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiService", "Services\WebApiService\WebApiService.csproj", "{4A8679C3-EB42-4514-8719-FF73268325EA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1161AAFD-BE61-4AC8-BE12-65DF4D656123}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{752C7931-4890-42A7-8ADC-0C21D68273C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{12595EE7-E391-4E3E-9A3C-19D354B26374}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "BuildingBlocks\EventBus\EventBus\EventBus.csproj", "{AC5DDD49-16AA-483C-A8FF-1F688E9CD1B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusRabbitMQ", "BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{3BA408F3-7C13-4100-ACA9-2389220F8C66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiServiceFirst", "Services\WebApiServiceFirst\WebApiServiceFirst.csproj", "{A3CA794F-E734-4B46-8863-7CDC77260721}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FibonacciCalculator", "FibonacciCalculator", "{86FA574E-99CD-49F4-8732-E2F8B96EB408}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FibonacciCalculator", "BuildingBlocks\FibonacciCalculator\FibonacciCalculator.csproj", "{2027AF93-EB0B-4EA8-98FA-93CD34A5A880}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A8679C3-EB42-4514-8719-FF73268325EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8679C3-EB42-4514-8719-FF73268325EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8679C3-EB42-4514-8719-FF73268325EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8679C3-EB42-4514-8719-FF73268325EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1161AAFD-BE61-4AC8-BE12-65DF4D656123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1161AAFD-BE61-4AC8-BE12-65DF4D656123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1161AAFD-BE61-4AC8-BE12-65DF4D656123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1161AAFD-BE61-4AC8-BE12-65DF4D656123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC5DDD49-16AA-483C-A8FF-1F688E9CD1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC5DDD49-16AA-483C-A8FF-1F688E9CD1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC5DDD49-16AA-483C-A8FF-1F688E9CD1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC5DDD49-16AA-483C-A8FF-1F688E9CD1B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA408F3-7C13-4100-ACA9-2389220F8C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA408F3-7C13-4100-ACA9-2389220F8C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA408F3-7C13-4100-ACA9-2389220F8C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA408F3-7C13-4100-ACA9-2389220F8C66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3CA794F-E734-4B46-8863-7CDC77260721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3CA794F-E734-4B46-8863-7CDC77260721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3CA794F-E734-4B46-8863-7CDC77260721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3CA794F-E734-4B46-8863-7CDC77260721}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2027AF93-EB0B-4EA8-98FA-93CD34A5A880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2027AF93-EB0B-4EA8-98FA-93CD34A5A880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2027AF93-EB0B-4EA8-98FA-93CD34A5A880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2027AF93-EB0B-4EA8-98FA-93CD34A5A880}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4A8679C3-EB42-4514-8719-FF73268325EA} = {8E789B4C-E3EC-4BE3-AE88-0A451BC97499}
+		{12595EE7-E391-4E3E-9A3C-19D354B26374} = {752C7931-4890-42A7-8ADC-0C21D68273C8}
+		{AC5DDD49-16AA-483C-A8FF-1F688E9CD1B9} = {12595EE7-E391-4E3E-9A3C-19D354B26374}
+		{3BA408F3-7C13-4100-ACA9-2389220F8C66} = {12595EE7-E391-4E3E-9A3C-19D354B26374}
+		{A3CA794F-E734-4B46-8863-7CDC77260721} = {8E789B4C-E3EC-4BE3-AE88-0A451BC97499}
+		{86FA574E-99CD-49F4-8732-E2F8B96EB408} = {752C7931-4890-42A7-8ADC-0C21D68273C8}
+		{2027AF93-EB0B-4EA8-98FA-93CD34A5A880} = {86FA574E-99CD-49F4-8732-E2F8B96EB408}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FC4DEDD-BB28-49B1-83D5-E5E1EF232317}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,49 @@
+version: '3.4'
+
+services:
+    webapiservicefirst:
+        image: ${DOCKER_REGISTRY-}webapiservicefirst
+        environment:
+            - EventBusChannelSettings__PrefetchCount=${DegreeOfParallelism}
+            - AppSettings__MaxDegreeOfParallelism=${DegreeOfParallelism}
+        restart: on-failure
+        depends_on:
+            - webapiservice
+            - rabbitmq
+        links: 
+            - rabbitmq
+        container_name: webapiservicefirst
+        build:
+            context: .
+            dockerfile: Services/WebApiServiceFirst/Dockerfile
+
+    webapiservice:
+        image: ${DOCKER_REGISTRY-}webapiservice
+        depends_on:
+            - rabbitmq
+        build:
+            context: .
+            dockerfile: Services/WebApiService/Dockerfile
+        expose:
+            - "80"
+    
+    rabbitmq:
+        image: "rabbitmq:3.11.10-management"
+        environment:
+            RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+            RABBITMQ_DEFAULT_USER: "rabbitmq"
+            RABBITMQ_DEFAULT_PASS: "rabbitmq"
+            RABBITMQ_DEFAULT_VHOST: "/"
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:15672"]
+            interval: 30s
+            timeout: 10s
+            retries: 5
+        labels:
+            NAME: "rabbitmq1"
+        volumes:
+            - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+            - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
