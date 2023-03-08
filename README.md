@@ -11,7 +11,7 @@ docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml" -p docke
 In this branch, I'm trying to achieve a zero  memory traffic.
 For example, this is a memory graph of
 ```
-var integrationEvent = JsonSerializer.Deserialize(context.Message.AsSpan(), eventType, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) as NextNumberInFibonacciSequenceCalculatedIntegrationEvent;
+var integrationEvent = JsonSerializer.Deserialize<NextNumberInFibonacciSequenceCalculatedIntegrationEvent>(context.Message.AsSpan(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) as NextNumberInFibonacciSequenceCalculatedIntegrationEvent;
 ```
 ![alt text](https://raw.githubusercontent.com/RFanil/Fibonacci/main/images/WithoutCustomDeserializer.png)
 
