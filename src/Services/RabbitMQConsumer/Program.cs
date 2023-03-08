@@ -59,7 +59,7 @@ void StartCalculation() {
     var fibonacciCalculator = app.Services.GetService<FibonacciCalculator>();
     int firstNumberFromTheFibonacciSequence = fibonacciCalculator.GetTheFirstNumberFromTheFibonacciSequence();
 
-    Parallel.For(0, appOption.Value.MaxDegreeOfParallelism + 1, (i) => {
+    Parallel.For(0,  1, (i) => {
         var sender = app.Services.GetRequiredService<ISender>();
         var integrationEvent = new NextNumberInFibonacciSequenceCalculatedIntegrationEvent(firstNumberFromTheFibonacciSequence);
         sender.Send(integrationEvent);

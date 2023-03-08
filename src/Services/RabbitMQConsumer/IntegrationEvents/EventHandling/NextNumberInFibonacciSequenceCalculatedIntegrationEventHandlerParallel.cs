@@ -4,6 +4,7 @@ using RabbitMQProducerFirst.IntegrationEvents.Events;
 using Fibonacci.BuildingBlocks.EventBus.Abstractions;
 using Microsoft.Extensions.Options;
 using RabbitMQConsumer;
+using RabbitMQProducer.Utilities;
 
 namespace RabbitMQProducerFirst.IntegrationEvents.EventHandling;
 public class NextNumberInFibonacciSequenceCalculatedIntegrationEventHandlerParallel : IIntegrationEventHandler<NextNumberInFibonacciSequenceCalculatedIntegrationEvent> {
@@ -41,10 +42,12 @@ public class NextNumberInFibonacciSequenceCalculatedIntegrationEventHandlerParal
         var task = _factory.StartNew(() =>
         {
             try {
-                var integrationEvent = JsonSerializer.Deserialize(context.Message.AsSpan(), eventType, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) as NextNumberInFibonacciSequenceCalculatedIntegrationEvent;
-                var nextNumber = _fibonacciCalculator.GetNextNumberFromFibonacciSequence(integrationEvent.Number);
+                //TODO: use object pooling
+                var newEvent = new NextNumberInFibonacciSequenceCalculatedIntegrationEvent(0);
+                NextNumberInFibonacciSequenceCalculatedIntegrationEventDeserializer.Parse(context.Message, newEvent);
+                var nextNumber = _fibonacciCalculator.GetNextNumberFromFibonacciSequence(newEvent.Number);
                 Handled?.Invoke(context.DeliveryTag, multiple: false);
-                _ = _sender.Send(integrationEvent);
+                _ = _sender.Send(newEvent);
 
             }
             catch (Exception ex) {
