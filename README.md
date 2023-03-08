@@ -7,6 +7,7 @@ docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml" -p docke
 
 # Experimental branch
 **Branch name: (Experimental_branch_for_zero_memory_traffic)**
+
 In this branch, I'm trying to achieve zero memory traffic.
 For example, this is a memory graph
 ```
