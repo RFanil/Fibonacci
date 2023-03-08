@@ -8,13 +8,13 @@ docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml" -p docke
 # Experimental branch
 **Branch name: (Experimental_branch_for_zero_memory_traffic)**
 
-In this branch, I'm trying to achieve zero memory traffic.
-For example, this is a memory graph
+In this branch, I'm trying to achieve zero a memory traffic.
+For example, this is a memory graph of
 ```
 var integrationEvent = JsonSerializer.Deserialize(context.Message.AsSpan(), eventType, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) as NextNumberInFibonacciSequenceCalculatedIntegrationEvent;
 ```
 ![alt text](https://raw.githubusercontent.com/RFanil/Fibonacci/main/images/WithoutCustomDeserializer.png)
 
-and this is with a **custom** "Deserializer" that uses hardcoded indexes to parse the json, so not as flexible as **JsonSerializer.Deserialize** but has **zero memory traffic**.
+and this is the memory traffic with a **custom** "Deserializer" that uses hardcoded indexes to parse the json, so not as flexible as **JsonSerializer.Deserialize** but has **zero memory traffic**.
 
 ![alt text](https://raw.githubusercontent.com/RFanil/Fibonacci/main/images/WithCustomDeserializer.png)
