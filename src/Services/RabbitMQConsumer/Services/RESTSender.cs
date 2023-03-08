@@ -2,12 +2,22 @@
 
 namespace RabbitMQProducerFirst.Services;
 internal class RESTSender : ISender {
-    private readonly HTTPSender _webServiceClient;
+    private readonly HttpClient _httpClient;
+    public RESTSender()
+    {
+        var socketsHandler = new SocketsHttpHandler
+        {
+            PooledConnectionLifetime = TimeSpan.FromMinutes(10),
+            PooledConnectionIdleTimeout = TimeSpan.FromMinutes(5),
+            MaxConnectionsPerServer = 10
+        };
 
-    public RESTSender(HTTPSender webServiceClient) {
-        _webServiceClient = webServiceClient;
+        _httpClient = new HttpClient(socketsHandler);
+        _httpClient.BaseAddress = new Uri("http://rabbitmqproducer:80/");
     }
-    public async Task Send(double number) {
-        await _webServiceClient.Post(number);
+
+    public async Task Send(double number)
+    {
+        await _httpClient.PostAsync("Fibanacci/PostNextFibonacciNumber?payload=" + number, null);
     }
 }

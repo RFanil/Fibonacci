@@ -51,7 +51,6 @@ void ConfigureIOptions() {
     builder.Services.Configure<AppSettings>(builder.Configuration.GetSection(nameof(AppSettings)));
 }
 void ConfigureDI() {
-    builder.Services.AddSingleton<HTTPSender>();
     builder.Services.AddSingleton<ConsumerEventBusRabbitMQ<NextNumberInFibonacciSequenceCalculatedIntegrationEvent>>();
     builder.Services.AddSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
 }
