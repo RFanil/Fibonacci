@@ -1,8 +1,8 @@
 ﻿using Fibonacci.Processing;
 using Fibonacci.BuildingBlocks.EventBus.Abstractions;
-using WebApiService.IntegrationEvents.Events;
+using RabbitMQProducer.IntegrationEvents.Events;
 
-namespace WebApiService {
+namespace RabbitMQProducer {
     internal class EventBusSender : ISender {
         private readonly IProducerEventBus _produceEventBus;
 

@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Fibonacci.BuildingBlocks.EventBus.Abstractions;
 using Fibonacci.BuildingBlocks.EventBus.Events;
 using System.Net;
-using WebApiService.IntegrationEvents.Events;
+using RabbitMQProducer.IntegrationEvents.Events;
 
-namespace WebApiService.Controllers
+namespace RabbitMQProducer.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -8,6 +8,7 @@
 		<DockerfileContext>..\..</DockerfileContext>
 		<ServerGarbageCollection>false</ServerGarbageCollection>
 		<DOTNET_gcConcurrent>true</DOTNET_gcConcurrent>
+		<DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
 	<ItemGroup>

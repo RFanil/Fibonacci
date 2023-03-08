@@ -1,11 +1,11 @@
 ﻿using Fibonacci.Processing;
 using Fibonacci;
 using System.Text.Json;
-using WebApiServiceFirst.IntegrationEvents.Events;
+using RabbitMQProducerFirst.IntegrationEvents.Events;
 using Fibonacci.BuildingBlocks.EventBus.Abstractions;
 using Microsoft.Extensions.Options;
 
-namespace WebApiServiceFirst.IntegrationEvents.EventHandling;
+namespace RabbitMQProducerFirst.IntegrationEvents.EventHandling;
 public class NextNumberInFibonacciSequenceCalculatedIntegrationEventHandlerParallel : IIntegrationEventHandler<NextNumberInFibonacciSequenceCalculatedIntegrationEvent> {
 
     private readonly FibonacciCalculator _fibonacciCalculator;

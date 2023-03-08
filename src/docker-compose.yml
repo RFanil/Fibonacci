@@ -1,32 +1,34 @@
 version: '3.4'
 
 services:
-    webapiservicefirst:
-        image: ${DOCKER_REGISTRY-}webapiservicefirst
+    rabbitmqconsumer:
+        image: ${DOCKER_REGISTRY-}rabbitmqconsumer
+        container_name: rabbitmqconsumer
         environment:
             - EventBusChannelSettings__PrefetchCount=${DegreeOfParallelism}
             - AppSettings__MaxDegreeOfParallelism=${DegreeOfParallelism}
+        build:
+            context: .
+            dockerfile: Services/RabbitMQConsumer/Dockerfile
         restart: on-failure
         depends_on:
-            - webapiservice
+            - rabbitmqproducer
             - rabbitmq
         links: 
             - rabbitmq
-        container_name: webapiservicefirst
+        
+
+    rabbitmqproducer:
+        image: ${DOCKER_REGISTRY-}rabbitmqproducer
+        container_name: rabbitmqproducer
         build:
             context: .
-            dockerfile: Services/WebApiServiceFirst/Dockerfile
-
-    webapiservice:
-        image: ${DOCKER_REGISTRY-}webapiservice
+            dockerfile: Services/RabbitMQProducer/Dockerfile
         depends_on:
             - rabbitmq
-        build:
-            context: .
-            dockerfile: Services/WebApiService/Dockerfile
         expose:
             - "80"
-    
+
     rabbitmq:
         image: "rabbitmq:3.11.10-management"
         environment:

@@ -7,10 +7,10 @@ using Fibonacci.BuildingBlocks.EventBusRabbitMQ.Consumer;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
 using System.Reflection;
-using WebApiServiceFirst;
-using WebApiServiceFirst.IntegrationEvents.EventHandling;
-using WebApiServiceFirst.IntegrationEvents.Events;
-using WebApiServiceFirst.Services;
+using RabbitMQProducerFirst;
+using RabbitMQProducerFirst.IntegrationEvents.EventHandling;
+using RabbitMQProducerFirst.IntegrationEvents.Events;
+using RabbitMQProducerFirst.Services;
 
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);

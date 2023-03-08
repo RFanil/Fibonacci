@@ -1,4 +1,4 @@
-﻿namespace WebApiServiceFirst.Services;
+﻿namespace RabbitMQProducerFirst.Services;
 public class HTTPSender {
     private readonly HttpClient _httpClient;
 
@@ -10,7 +10,7 @@ public class HTTPSender {
         };
 
         _httpClient = new HttpClient(socketsHandler);
-        _httpClient.BaseAddress = new Uri("http://webapiservice:80/");
+        _httpClient.BaseAddress = new Uri("http://RabbitMQProducer:80/");
     }
     
     public async Task Post(double number) {

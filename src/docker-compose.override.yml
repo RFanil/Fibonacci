@@ -1,14 +1,13 @@
 version: '3.4'
 
 services:
-  webapiservice:
+  rabbitmqconsumer:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
 
-
-  webapiservicefirst:
+  rabbitmqproducer:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

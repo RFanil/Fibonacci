@@ -1,6 +1,6 @@
 ﻿using Fibonacci.BuildingBlocks.EventBus.Events;
 
-namespace WebApiServiceFirst.IntegrationEvents.Events
+namespace RabbitMQProducerFirst.IntegrationEvents.Events
 {
     public record NextNumberInFibonacciSequenceCalculatedIntegrationEvent : IntegrationEvent
     {

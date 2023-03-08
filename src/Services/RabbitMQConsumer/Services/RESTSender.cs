@@ -1,6 +1,6 @@
 ﻿using Fibonacci.Processing;
 
-namespace WebApiServiceFirst.Services;
+namespace RabbitMQProducerFirst.Services;
 internal class RESTSender : ISender {
     private readonly HTTPSender _webServiceClient;
 
