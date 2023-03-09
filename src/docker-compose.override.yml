@@ -3,13 +3,13 @@ version: '3.4'
 services:
   rabbitmqconsumer:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
     ports:
       - "80"
 
   rabbitmqproducer:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
     ports:
       - "80"
 
