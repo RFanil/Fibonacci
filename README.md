@@ -1,5 +1,5 @@
 # Getting started
-Edit the `${.env}` file- set the degree of parallelism, go to the "Fibonacci-Service\src" folder and run the command: 
+Edit the `${.env}` file- set the degree of parallelism, go to the "Fibonacci\src" folder and run the command: 
 ```sh
 docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml" -p dockercompose7797495582345043695 --ansi never up -d
 ```
