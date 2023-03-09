@@ -50,7 +50,7 @@ public class NextNumberInFibonacciSequenceCalculatedIntegrationEventHandlerParal
             catch (Exception ex) {
                 _logger.LogWarning(ex, "----- ERROR Processing message \"{Message}\"", context.Message);
             }
-        }, cts.Token);
+        }, TaskCreationOptions.LongRunning);
 
         return Task.CompletedTask;
     }
